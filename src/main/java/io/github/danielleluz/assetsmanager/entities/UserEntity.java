@@ -2,11 +2,17 @@ package io.github.danielleluz.assetsmanager.entities;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.context.annotation.Profile;
 
 import java.util.UUID;
 
 @Entity
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class UserEntity {
     @GeneratedValue
     private UUID id;
