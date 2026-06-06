@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.context.annotation.Profile;
 
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -38,4 +39,7 @@ public class UserEntity {
     @ManyToOne
     @JoinColumn(name = "profile_id")
     private Profile profile;
+
+    @ManyToMany(mappedBy = "users")
+    private List<GroupEntity> groups;
 }
