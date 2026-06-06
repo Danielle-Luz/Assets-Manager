@@ -1,0 +1,32 @@
+package io.github.danielleluz.assetsmanager.entities;
+
+import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.util.UUID;
+
+@Entity
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class StepEntity {
+    @GeneratedValue
+    private UUID id;
+
+    @NotBlank
+    private String name;
+
+    @NotBlank
+    @Min(1)
+    private int order;
+
+    @NotNull
+    @ManyToOne
+    @JoinColumn(name = "movement_type_id")
+    private MovementTypeEntity movementType;
+}
