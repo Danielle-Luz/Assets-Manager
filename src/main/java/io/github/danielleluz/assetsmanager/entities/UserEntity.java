@@ -1,8 +1,8 @@
 package io.github.danielleluz.assetsmanager.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
+import org.springframework.context.annotation.Profile;
 
 import java.util.UUID;
 
@@ -27,4 +27,9 @@ public class UserEntity {
     @NotBlank
     @Pattern(regexp = "^[a-zA-Z]+$")
     private String lastName;
+
+    @NotNull
+    @ManyToOne
+    @JoinColumn(name = "profile_id")
+    private Profile profile;
 }
