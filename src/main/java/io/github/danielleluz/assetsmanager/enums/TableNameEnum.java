@@ -2,6 +2,7 @@ package io.github.danielleluz.assetsmanager.enums;
 
 public enum TableNameEnum {
     USER,
+    GROUP,
     PROFILE,
     PERMISSION,
     ASSET,
