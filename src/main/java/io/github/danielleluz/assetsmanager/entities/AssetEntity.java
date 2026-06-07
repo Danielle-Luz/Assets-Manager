@@ -1,6 +1,6 @@
 package io.github.danielleluz.assetsmanager.entities;
 
-import io.github.danielleluz.assetsmanager.enums.StatusEnum;
+import io.github.danielleluz.assetsmanager.enums.AssetStatusEnum;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
@@ -25,7 +25,7 @@ public class AssetEntity {
     private String serialNumber;
 
     @NotBlank
-    private StatusEnum status;
+    private AssetStatusEnum status;
 
     @ManyToMany
     @JoinTable(

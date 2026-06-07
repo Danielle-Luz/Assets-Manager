@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -29,4 +30,7 @@ public class StepEntity {
     @ManyToOne
     @JoinColumn(name = "movement_type_id")
     private MovementTypeEntity movementType;
+
+    @OneToMany(mappedBy = "step")
+    private List<StepActionEntity> stepActions;
 }
