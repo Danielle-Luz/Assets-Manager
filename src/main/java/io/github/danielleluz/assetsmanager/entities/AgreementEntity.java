@@ -12,6 +12,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Entity
 @Data
@@ -30,7 +31,7 @@ public class AgreementEntity {
     private MovementTypeEntity movementType;
 
     @NotNull
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "current_step_id")
     private StepEntity currentStep;
 
@@ -57,4 +58,15 @@ public class AgreementEntity {
             inverseJoinColumns = @JoinColumn(name = "attachment_id")
     )
     private List<AttachmentEntity> attachments;
+
+    @OneToMany(mappedBy = "agreement_id")
+    private List<AgreementAssetEntity> agreementAssets;
+
+    @Transient
+    public List<AssetEntity> getAssets() {
+        return this.agreementAssets.
+                stream().
+                map(AgreementAssetEntity::getAsset).
+                collect(Collectors.toList());
+    }
 }

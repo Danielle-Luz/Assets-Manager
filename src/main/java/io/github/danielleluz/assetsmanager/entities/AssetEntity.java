@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Entity
 @Data
@@ -25,7 +26,8 @@ public class AssetEntity {
     private String serialNumber;
 
     @NotBlank
-    private AssetStatusEnum status;
+    @Enumerated(EnumType.STRING)
+    private AssetStatusEnum status = AssetStatusEnum.AVAILABLE;
 
     @ManyToMany
     @JoinTable(
@@ -34,4 +36,15 @@ public class AssetEntity {
             inverseJoinColumns = @JoinColumn(name = "attachment_id")
     )
     private List<AttachmentEntity> attachments;
+
+    @OneToMany(mappedBy = "asset_id")
+    private List<AgreementAssetEntity> agreementAssets;
+
+    @Transient
+    public List<AgreementEntity> getAgreements() {
+        return this.agreementAssets.
+                stream().
+                map(AgreementAssetEntity::getAgreement).
+                collect(Collectors.toList());
+    }
 }
