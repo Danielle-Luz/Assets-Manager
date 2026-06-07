@@ -2,6 +2,7 @@ package io.github.danielleluz.assetsmanager.entities;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -35,9 +36,12 @@ public class AgreementEntity {
     @JoinColumn(name = "current_step_id")
     private StepEntity currentStep;
 
+    @Column(length = 255)
+    @Size(max = 255)
     private String description;
 
     @CreatedDate
+    @Column(updatable = false)
     private LocalDateTime creationDate;
 
     @LastModifiedDate
@@ -45,6 +49,7 @@ public class AgreementEntity {
 
     @ManyToOne
     @JoinColumn(name = "created_by_id")
+    @Column(updatable = false)
     private UserEntity createdBy;
 
     @ManyToOne
