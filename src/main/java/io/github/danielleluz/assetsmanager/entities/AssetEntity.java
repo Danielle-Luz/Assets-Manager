@@ -23,6 +23,7 @@ public class AssetEntity {
     private String productCode;
 
     @NotBlank
+    @Column(unique = true)
     private String serialNumber;
 
     @NotBlank

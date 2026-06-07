@@ -1,9 +1,6 @@
 package io.github.danielleluz.assetsmanager.entities;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,6 +18,7 @@ public class ProfileEntity {
     private UUID id;
 
     @NotBlank
+    @Column(unique = true)
     private String profileName;
 
     @OneToMany(mappedBy = "profile", cascade = CascadeType.ALL)
