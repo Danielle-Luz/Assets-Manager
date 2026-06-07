@@ -1,9 +1,11 @@
 package io.github.danielleluz.assetsmanager.entities;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -21,6 +23,11 @@ public class CustomerEntity {
 
     @NotBlank
     private String name;
+
+    @NotBlank
+    @Column(unique = true)
+    @Pattern(regexp = "\\d{2}\\.\\d{3}\\.\\d{3}\\/\\d{4}-\\d{2}")
+    private String taxId;
 
     @NotBlank
     private String externalId;
