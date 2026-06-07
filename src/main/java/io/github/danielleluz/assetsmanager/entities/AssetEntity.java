@@ -16,6 +16,7 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 @NoArgsConstructor
 public class AssetEntity {
+    @Id
     @GeneratedValue
     private UUID id;
 

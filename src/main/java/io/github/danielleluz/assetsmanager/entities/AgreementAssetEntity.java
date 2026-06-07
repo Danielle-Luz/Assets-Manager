@@ -6,6 +6,7 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Entity
 @Data
@@ -13,6 +14,10 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @EntityListeners(AuditingEntityListener.class)
 public class AgreementAssetEntity {
+    @Id
+    @GeneratedValue
+    private UUID id;
+
     @ManyToOne
     @JoinColumn(name = "agreement_id")
     private AgreementEntity agreement;

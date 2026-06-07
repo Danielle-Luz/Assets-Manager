@@ -17,6 +17,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @EntityListeners(AuditingEntityListener.class)
 public class StepHistoryClass {
+    @Id
     @GeneratedValue
     private UUID id;
 

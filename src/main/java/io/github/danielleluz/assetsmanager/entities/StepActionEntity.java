@@ -15,6 +15,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 public class StepActionEntity {
+    @Id
     @GeneratedValue
     private UUID id;
 

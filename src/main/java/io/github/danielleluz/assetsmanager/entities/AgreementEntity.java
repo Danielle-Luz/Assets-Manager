@@ -10,6 +10,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Entity
@@ -18,6 +19,10 @@ import java.util.stream.Collectors;
 @NoArgsConstructor
 @EntityListeners(AuditingEntityListener.class)
 public class AgreementEntity {
+    @Id
+    @GeneratedValue
+    private UUID id;
+
     @NotNull
     @ManyToOne
     @JoinColumn(name = "customer_id")

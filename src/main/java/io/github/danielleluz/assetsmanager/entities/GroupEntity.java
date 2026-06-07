@@ -14,6 +14,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 public class GroupEntity {
+    @Id
     @GeneratedValue
     private UUID id;
 

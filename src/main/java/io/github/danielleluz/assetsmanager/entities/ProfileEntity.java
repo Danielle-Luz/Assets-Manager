@@ -14,6 +14,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ProfileEntity {
+    @Id
     @GeneratedValue
     private UUID id;
 

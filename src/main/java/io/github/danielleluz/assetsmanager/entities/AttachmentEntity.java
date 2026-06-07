@@ -14,6 +14,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 public class AttachmentEntity {
+    @Id
     @GeneratedValue
     private UUID id;
 
