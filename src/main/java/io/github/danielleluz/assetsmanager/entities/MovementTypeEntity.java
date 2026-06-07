@@ -1,9 +1,6 @@
 package io.github.danielleluz.assetsmanager.entities;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,7 +18,9 @@ public class MovementTypeEntity {
     private UUID id;
 
     @NotBlank
-    private String movementType;
+    @Enumerated(EnumType.STRING)
+    @Column(unique = true)
+    private MovementTypeEntity movementType;
 
     @OneToMany(mappedBy = "movementType", cascade = CascadeType.ALL)
     private List<StepEntity> steps;
