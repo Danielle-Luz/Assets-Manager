@@ -1,9 +1,7 @@
 package io.github.danielleluz.assetsmanager.entities;
 
 import io.github.danielleluz.assetsmanager.enums.TableNameEnum;
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -16,6 +14,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class PermissionEntity {
     @NotBlank
+    @Enumerated(EnumType.STRING)
     private TableNameEnum tableName;
 
     @NotNull
