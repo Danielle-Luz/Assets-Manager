@@ -28,6 +28,10 @@ public class StepHistoryClass {
     @NotNull
     private StepActionEntity stepAction;
 
+    @ManyToOne
+    @JoinColumn(name = "agreement_id")
+    private AgreementEntity agreement;
+
     @NotNull
     @Enumerated(EnumType.STRING)
     private StepStatusEnum status = StepStatusEnum.PENDING;
