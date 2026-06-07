@@ -18,5 +18,6 @@ public class AttachmentEntity {
     private UUID id;
 
     @NotBlank
+    @Lob
     private byte[] content;
 }
