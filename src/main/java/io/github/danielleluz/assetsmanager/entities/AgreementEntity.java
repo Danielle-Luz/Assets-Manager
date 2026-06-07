@@ -1,9 +1,6 @@
 package io.github.danielleluz.assetsmanager.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.EntityListeners;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -14,6 +11,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
+import java.util.List;
 
 @Entity
 @Data
@@ -51,4 +49,12 @@ public class AgreementEntity {
     @ManyToOne
     @JoinColumn(name = "last_modified_by_id")
     private UserEntity lastModifiedBy;
+
+    @ManyToMany
+    @JoinTable(
+            name = "agreement_attachments",
+            joinColumns = @JoinColumn(name = "agreement_id"),
+            inverseJoinColumns = @JoinColumn(name = "attachment_id")
+    )
+    private List<AttachmentEntity> attachments;
 }
