@@ -3,15 +3,12 @@ package io.github.danielleluz.assetsmanager.entities;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
-import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -42,9 +39,11 @@ public class AgreementEntity {
 
     @CreatedDate
     @Column(updatable = false)
+    @Setter(AccessLevel.NONE)
     private LocalDateTime creationDate;
 
     @LastModifiedDate
+    @Setter(AccessLevel.NONE)
     private LocalDateTime lastModificationDate;
 
     @ManyToOne

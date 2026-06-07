@@ -3,10 +3,7 @@ package io.github.danielleluz.assetsmanager.entities;
 import io.github.danielleluz.assetsmanager.enums.StepStatusEnum;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import org.hibernate.annotations.ColumnDefault;
+import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -37,9 +34,12 @@ public class StepHistoryClass {
     private StepStatusEnum status = StepStatusEnum.PENDING;
 
     @CreatedDate
+    @Column(updatable = false)
+    @Setter(AccessLevel.NONE)
     private LocalDateTime creationDate;
 
     @LastModifiedDate
+    @Setter(AccessLevel.NONE)
     private LocalDateTime lastModificationDate;
 
     @ManyToOne

@@ -1,12 +1,7 @@
 package io.github.danielleluz.assetsmanager.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.EntityListeners;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import jakarta.persistence.*;
+import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -27,5 +22,7 @@ public class AgreementAssetEntity {
     private AssetEntity asset;
 
     @CreatedDate
+    @Column(updatable = false)
+    @Setter(AccessLevel.NONE)
     private LocalDateTime createdDate;
 }
