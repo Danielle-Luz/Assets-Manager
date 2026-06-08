@@ -3,6 +3,7 @@ package io.github.danielleluz.assetsmanager.entities;
 import io.github.danielleluz.assetsmanager.enums.OperatorEnum;
 import io.github.danielleluz.assetsmanager.enums.ValueTypeEnum;
 import io.github.danielleluz.assetsmanager.validation.annotations.IsValidClassField;
+import io.github.danielleluz.assetsmanager.validation.annotations.SameFieldType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EntityListeners;
 import jakarta.persistence.GeneratedValue;
@@ -18,6 +19,7 @@ import java.util.UUID;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@SameFieldType
 public class StepActionCriteriaEntity {
     @Id
     @GeneratedValue
